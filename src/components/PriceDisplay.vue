@@ -6,7 +6,6 @@
 
 <script>
 export default {
-  name: "PriceDisplay",
   props: {
     value: Number,
     prefix: {
