@@ -4,7 +4,8 @@
       :cart="cart"
       :cartQty="cartTotal"
       :cartTotal="cartTotal"
-      :maximum.sync="maximum"
+      :maximum="maximum"
+      @update:maximum="updateMaximum"
       :products="products"
       :sliderStatus="sliderStatus"
       @toggle="toggleSliderStatus"
@@ -77,6 +78,9 @@ export default {
       } else {
         this.cart.splice(key, 1);
       }
+    },
+    updateMaximum(value) {
+      this.maximum = value;
     },
   },
 };

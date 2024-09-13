@@ -12,7 +12,6 @@
           class="form-control mx-2"
           style="width: 60px; text-align: center"
           v-model="maxAmount"
-          @change="$emit('update:maximum', maxAmount)"
         />
         <input
           type="range"
@@ -20,7 +19,6 @@
           min="0"
           max="200"
           v-model="maxAmount"
-          @input="$emit('update:maximum', maxAmount)"
         />
       </div>
     </div>
@@ -30,15 +28,18 @@
 <script>
 export default {
   name: "PriceSlider",
-  data: function () {
-    return {
-      maxAmount: 50,
-    };
-  },
   props: ["sliderStatus", "maximum"],
   computed: {
     sliderState: function () {
       return this.sliderStatus ? "d-flex" : "d-none";
+    },
+    maxAmount: {
+      get() {
+        return this.maximum;
+      },
+      set(value) {
+        this.$emit("update:maximum", Number(value));
+      },
     },
   },
 };

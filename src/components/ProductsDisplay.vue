@@ -10,7 +10,8 @@
     ></navbar-display>
     <price-slider
       :sliderStatus="sliderStatus"
-      :maximum.sync="maximum"
+      :maximum="maximum"
+      @update:maximum="updateMaximum"
     ></price-slider>
     <list-product
       :products="products"
@@ -50,6 +51,9 @@ export default {
     },
     delItem: function (index) {
       this.$emit("delete", index);
+    },
+    updateMaximum(value) {
+      this.$emit("update:maximum", value);
     },
   },
 };
